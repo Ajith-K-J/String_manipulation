@@ -1,7 +1,7 @@
 // Given example string
 const exampleString = `A thing of beauty is a joy forever, 
 Its loveliness increases, it will never 
-Pass into nothingness; But still keep 
+Pass into malayalam nothingness; But still keep 
 A bower quiet for us, and a sleep 
 Full of sweet Dreams, health, and quiet breathing. 
 Therefore, on every morrow, are we wreathing? 
@@ -92,8 +92,14 @@ function toggleCaseForUppercaseWordsInArray(words) {
 // Objective 3: Print word starting or ending with the given letter
 function printWordStartingOrEndingWithLetter(words, letter) {
   const matchingWords = words.filter(word => {
-    return word.length > 1 && ((word[0] === letter && word[word.length - 1] !== letter) ||
-                              (word[0] !== letter && word[word.length - 1] === letter));
+    if(word.length===1){
+      return (word[0].toLowerCase() === letter )
+    }
+    else{
+    // console.log(word[0],letter);
+          return ((word[0].toLowerCase() === letter && word[word.length-1].toLowerCase() !== letter) ||
+                (word[0].toLowerCase() !== letter && word[word.length-1].toLowerCase() === letter));
+        }
   });
 
   if (matchingWords.length === 0) {
@@ -118,7 +124,8 @@ function printMiddleLetterForOddLengthWords(words) {
 // Call the functions to achieve the objectives
 printRepeatingLettersForArrayElements(stringArray);
 toggleCaseForUppercaseWordsInArray(arrayOfWords);
-const inputLetter = 'a';
+const inputLetter = 'a'
+// console.log(inputLetter);
 printWordStartingOrEndingWithLetter(arrayOfWords, inputLetter.toLowerCase());
 printMiddleLetterForOddLengthWords(arrayOfWords);
 // console.log(arrayOfWords);
