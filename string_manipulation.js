@@ -24,7 +24,24 @@ All lovely tales that we have heard or read:
 An endless Fountain of immortal drink, 
 Pouring unto us from the heaven's brink.`;
 
+const fs = require('fs');
+const PDFDocument = require('pdfkit');
+
+// Function to generate a PDF for each objective
+function generateObjectivePDF(objectiveName, output) {
+  const doc = new PDFDocument();
+  const outputStream = fs.createWriteStream(`${objectiveName}.pdf`);
+  doc.pipe(outputStream);
+
+  // Write the output to the PDF document
+  doc.fontSize(12);
+  doc.text(output, 50, 50);
+
+  doc.end();
+}
+
 // Parse the given example string into an array of words
+
 const arrayOfWords = exampleString
   .match(/[a-zA-Z']+/g)
   .filter(word => word !== '');
@@ -60,6 +77,8 @@ function printRepeatingLettersForArrayElements(stringArray) {
       console.log(`String Element: ${inputString}, Repeating Letters:`, JSON.stringify(repeatingLetters));
     }
   }
+  const objective1Output = ''; // Store the output for Objective 1 here
+  generateObjectivePDF('Objective1', objective1Output);
 }
 
 
@@ -87,6 +106,8 @@ function toggleCaseForUppercaseWordsInArray(words) {
 
   // Step 2: Print the modified words
   console.log(upperCaseWords.join(', '));
+  const objective2Output = ''; // Store the output for Objective 2 here
+  generateObjectivePDF('Objective2', objective2Output);
 }
 
 // Objective 3: Print word starting or ending with the given letter
@@ -109,6 +130,8 @@ function printWordStartingOrEndingWithLetter(words, letter) {
       console.log(word);
     }
   }
+  const objective3Output = ''; // Store the output for Objective 3 here
+  generateObjectivePDF('Objective3', objective3Output);
 }
 
 // Objective 4: Print middle letter for odd length words
@@ -119,6 +142,8 @@ function printMiddleLetterForOddLengthWords(words) {
       console.log(`Word: ${word}, Middle Letter: ${word[middleIndex]}`);
     }
   }
+  const objective4Output = ''; // Store the output for Objective 4 here
+  generateObjectivePDF('Objective4', objective4Output);
 }
 
 // Call the functions to achieve the objectives
